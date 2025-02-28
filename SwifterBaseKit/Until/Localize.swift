@@ -27,6 +27,26 @@ public enum LanguageType : String {
     case cs         = "cs"
     /// 德语
     case de         = "de"
+    /// 俄语
+    case ru         = "ru"
+    /// 泰语
+    case th         = "th"
+    /// 葡萄牙语
+    case pt         = "pt-PT"
+    /// 阿拉伯语
+    case ar         = "ar"
+    /// 瑞典语
+    case sv         = "sv"
+    ///  斯洛伐克语
+    case sk         = "sk"
+    ///  希腊
+    case el         = "el"
+    ///  斯洛文尼亚
+    case sl         = "sl"
+    ///  越南
+    case vi         = "vi"
+    ///  土耳其
+    case tr         = "tr"
 }
 
 public struct Localize {
