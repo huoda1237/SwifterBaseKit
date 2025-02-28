@@ -47,6 +47,7 @@ public enum LanguageType : String {
     case vi         = "vi"
     ///  土耳其
     case tr         = "tr"
+    //11111
 }
 
 public struct Localize {
