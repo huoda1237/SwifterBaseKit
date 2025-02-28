@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum LanguageType : String {
+public enum LanguageType : String , CaseIterable{
     case zh_Hans    = "zh-Hans"
     case zh_Hant    = "zh-Hant"
     case en         = "en"
