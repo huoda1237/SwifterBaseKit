@@ -590,6 +590,21 @@ public extension UIImage {
         self.init(cgImage: aCgImage)
     }
     
+    
+    static func creatImage(color: UIColor, size: CGSize) -> UIImage {
+        let format = UIGraphicsImageRendererFormat()
+            format.scale = 1.0 // 设置 scale 为 1.0，生成一倍图
+            format.opaque = true
+           let renderer = UIGraphicsImageRenderer(size: size,format: format)
+          let image = renderer.image { context in
+              // 设置填充颜色
+              color.setFill()
+              // 绘制矩形，填满整个区域
+              context.fill(CGRect(origin: .zero, size: size))
+          }
+        return image
+    }
+    
 }
 
 public extension CIImage {

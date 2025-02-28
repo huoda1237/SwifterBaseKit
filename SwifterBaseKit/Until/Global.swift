@@ -16,7 +16,7 @@ public let kLastWindow = UIApplication.shared.windows.last!
 
 public let kReferenceW = kScreenWidth / 375.0
 public let kReferenceH = kScreenHeight / 667.0
-
+public let kIsIPad = (UIDevice.current.userInterfaceIdiom == .pad || UIDevice.current.model.lowercased().contains("ipad"))
 /// 状态栏高度
 public var kScreenStatusHeight : CGFloat {
     if #available(iOS 13.0, *) {
@@ -51,6 +51,7 @@ public struct kDirectoryPath {
 /// 版本信息
 public struct kAppInfo {
     public static var version = { Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String ?? "" }()
+    public static var versionBuild = { Bundle.main.infoDictionary!["CFBundleVersion"] as? String ?? "" }()
     public static var bundleId = { Bundle.main.infoDictionary!["CFBundleIdentifier"] as? String ?? "" }()
     public static var displayName: String = {
         Bundle.main.localizedInfoDictionary?["CFBundleDisplayName"] as? String ?? Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String ?? ""
