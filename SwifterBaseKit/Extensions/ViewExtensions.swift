@@ -437,7 +437,9 @@ public extension UIView {
         }
     }
     
-    //  视图转图片 UIView to UIImage
+    /**
+     白色背景截图
+     */
     var snapshotToImage: UIImage? {
         
         let drawWidth = ceil(self.bounds.size.width)
@@ -462,7 +464,35 @@ public extension UIView {
         UIGraphicsEndImageContext()
         return image
     }
+    
+    /**
+     透明色背景截图
+     */
+    var snapshotToImageWithAlpha: UIImage? {
         
+        let drawWidth = ceil(self.bounds.size.width)
+        let drawHeight = ceil(self.bounds.size.height)
+
+        let size = CGSize(width: drawWidth, height: drawHeight)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+        guard let ctx = UIGraphicsGetCurrentContext() else {
+            return nil
+        }
+        ctx.saveGState()
+        ctx.setFillColor(UIColor.clear.cgColor)
+        ctx.setStrokeColor(UIColor.clear.cgColor)
+        ctx.fill(CGRect(origin: .zero, size: CGSize(width: drawWidth, height: drawHeight)))
+        ctx.setShouldAntialias(true)
+        ctx.setAllowsAntialiasing(true)
+        ctx.interpolationQuality = .high
+        ctx.setRenderingIntent(.defaultIntent)
+        ctx.restoreGState()
+        layer.render(in: ctx)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+    
     func drawLineDashView(_ radius: CGFloat) {
         let layer = CAShapeLayer()
         layer.strokeColor = UIColor.white.cgColor
