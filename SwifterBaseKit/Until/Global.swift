@@ -28,6 +28,17 @@ public var kScreenStatusHeight : CGFloat {
     return UIApplication.shared.statusBarFrame.height
     
 }
+/// 状态栏高度
+public var kScreenSafeBottomHeight : CGFloat {
+    if #available(iOS 13.0, *) {
+        if let bottom = UIApplication.shared.keyWindow?.safeAreaInsets.bottom {
+            return bottom
+        }
+        return 0.0
+    }
+    return 0.0
+    
+}
 
 /// 导航栏高度
 public let kSafeAreaTopHeight : CGFloat = Int(kScreenStatusHeight) > 20 ? 88.0 : 64.0
