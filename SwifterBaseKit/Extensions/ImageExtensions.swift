@@ -366,8 +366,7 @@ public extension UIImage {
         var rotatedRect = imageRect.applying(rotatedTransform)
         rotatedRect.origin.x = 0
         rotatedRect.origin.y = 0
-        
-        UIGraphicsBeginImageContextWithOptions(rotatedRect.size, false, 1.0)
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: Int(rotatedRect.size.width), height: Int(rotatedRect.size.height)), false, 1.0)
         let context = UIGraphicsGetCurrentContext()!
         context.translateBy(x: rotatedRect.width / 2, y: rotatedRect.height / 2)
         context.rotate(by: radian)
