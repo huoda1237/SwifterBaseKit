@@ -47,6 +47,8 @@ public enum LanguageType : String , CaseIterable{
     case vi         = "vi"
     ///  土耳其
     case tr         = "tr"
+    ///   匈牙利语
+    case hu         = "hu"
     //11111
 }
 
