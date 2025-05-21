@@ -8,31 +8,31 @@
 import Foundation
 
 public enum LanguageType : String , CaseIterable{
+    case en         = "en"
     case zh_Hans    = "zh-Hans"
     case zh_Hant    = "zh-Hant"
-    case en         = "en"
     /// 日本语
     case ja         = "ja"
-    /// 韩语
-    case ko         = "ko"
     /// 法语
     case fr         = "fr"
     /// 意大利语
     case it         = "it"
+    /// 德语
+    case de         = "de"
     /// 西班牙语
     case es         = "es"
     /// 波兰语
     case pl         = "pl"
-    /// 捷克
-    case cs         = "cs"
-    /// 德语
-    case de         = "de"
     /// 俄语
     case ru         = "ru"
     /// 泰语
     case th         = "th"
+    /// 韩语
+    case ko         = "ko"
     /// 葡萄牙语
     case pt         = "pt-PT"
+    /// 捷克
+    case cs         = "cs"
     /// 阿拉伯语
     case ar         = "ar"
     /// 瑞典语
@@ -50,6 +50,55 @@ public enum LanguageType : String , CaseIterable{
     ///   匈牙利语
     case hu         = "hu"
     //11111
+    
+    public func description() -> String {
+          switch self {
+          case .en:
+              return "English"
+          case .zh_Hans:
+              return "简体中文"
+          case .zh_Hant:
+              return "繁體中文"
+          case .ja:
+              return "日本語"
+          case .fr:
+              return "Français"
+          case .it:
+              return "Italiano"
+          case .de:
+              return "Deutsch"
+          case .es:
+              return "Español"
+          case .pl:
+              return "Polski"
+          case .ru:
+              return "Русский"
+          case .th:
+              return "แบบไทย"
+          case .ko:
+              return "한국인"
+          case .pt:
+              return "Português"
+          case .cs:
+              return "čeština"
+          case .ar:
+              return "عربي"
+          case .sv:
+              return "Svenska"
+          case .sk:
+              return "Slovenský jazyk"
+          case .el:
+              return "Ελληνικά"
+          case .sl:
+              return "Slovenščina"
+          case .vi:
+              return "Tiếng Việt"
+          case .tr:
+              return "Türkçe"
+          case .hu:
+              return "Magyar"
+          }
+      }
 }
 
 public struct Localize {
