@@ -146,6 +146,49 @@ public extension UIColor {
         let blue = hexValue & 0xff
         self.init(red: red, green: green, blue: blue, transparency: trans)
     }
+    
+    convenience init?(hexString: String) {
+        let hex = hexString.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: "#", with: "").replacingOccurrences(of: "0x", with: "")
+        var int: UInt64 = 0
+        
+        // 扫描十六进制字符串为整型
+        guard Scanner(string: hex).scanHexInt64(&int) else {
+            return nil
+        }
+        
+        let a, r, g, b: UInt64
+        switch hex.count {
+        case 3: // RGB (12-bit)，如 "#F00"
+            (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
+        case 6: // RGB (24-bit)，如 "#FF0000"
+            (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
+        case 8: // ARGB (32-bit)，如 "#80FF0000"
+            (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
+        default: // 格式错误返回 nil
+            return nil
+        }
+        
+        self.init(
+            red: CGFloat(r) / 255,
+            green: CGFloat(g) / 255,
+            blue: CGFloat(b) / 255,
+            alpha: CGFloat(a) / 255
+        )
+    }
+    
+    var argbValue: UInt32? {
+        guard let components = self.cgColor.components, components.count >= 4 else {
+            return nil // 非 RGBA 颜色空间（如 Grayscale）返回 nil
+        }
+        
+        let r = UInt32(components[0] * 255) << 16
+        let g = UInt32(components[1] * 255) << 8
+        let b = UInt32(components[2] * 255)
+        let a = UInt32(components[3] * 255) << 24
+        
+        return a | r | g | b
+    }
+    
 }
 
 public extension UIColor {
