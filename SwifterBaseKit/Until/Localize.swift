@@ -56,7 +56,7 @@ public enum LanguageType : String , CaseIterable{
     /// 丹麦语
     case da         = "da"
     /// 挪威语
-    case no         = "no"
+    case nb         = "nb"
     /// 芬兰语
     case fi         = "fi"
     /// 克罗地亚语
@@ -115,7 +115,7 @@ public enum LanguageType : String , CaseIterable{
               return "မြန်မာ"
           case .da:
               return "Dansk"
-          case .no:
+          case .nb:
               return "Norsk"
           case .fi:
               return "Suomi"
