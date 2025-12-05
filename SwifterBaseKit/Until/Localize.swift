@@ -37,18 +37,30 @@ public enum LanguageType : String , CaseIterable{
     case ar         = "ar"
     /// 瑞典语
     case sv         = "sv"
-    ///  斯洛伐克语
+    /// 斯洛伐克语
     case sk         = "sk"
-    ///  希腊
+    /// 希腊
     case el         = "el"
-    ///  斯洛文尼亚
+    /// 斯洛文尼亚
     case sl         = "sl"
-    ///  越南
+    /// 越南
     case vi         = "vi"
-    ///  土耳其
+    /// 土耳其
     case tr         = "tr"
-    ///   匈牙利语
+    /// 匈牙利语
     case hu         = "hu"
+    /// 荷兰语
+    case nl         = "nl"
+    /// 缅甸语
+    case my         = "my"
+    /// 丹麦语
+    case da         = "da"
+    /// 挪威语
+    case no         = "no"
+    /// 芬兰语
+    case fi         = "fi"
+    /// 克罗地亚语
+    case hr         = "hr"
     //11111
     
     public func description() -> String {
@@ -97,6 +109,18 @@ public enum LanguageType : String , CaseIterable{
               return "Türkçe"
           case .hu:
               return "Magyar"
+          case .nl:
+              return "Nederlands"
+          case .my:
+              return "မြန်မာ"
+          case .da:
+              return "Dansk"
+          case .no:
+              return "Norsk"
+          case .fi:
+              return "Suomi"
+          case .hr:
+              return "Hrvatski"
           }
       }
 }
