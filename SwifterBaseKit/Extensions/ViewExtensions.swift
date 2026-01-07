@@ -445,6 +445,10 @@ public extension UIView {
         let drawWidth = ceil(self.bounds.size.width)
         let drawHeight = ceil(self.bounds.size.height)
 
+        if drawWidth == 0 || drawHeight == 0 {
+            return nil
+        }
+        
         let size = CGSize(width: drawWidth, height: drawHeight)
         UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
         guard let ctx = UIGraphicsGetCurrentContext() else {
@@ -473,6 +477,10 @@ public extension UIView {
         let drawWidth = ceil(self.bounds.size.width)
         let drawHeight = ceil(self.bounds.size.height)
 
+        if drawWidth == 0 || drawHeight == 0 {
+            return nil
+        }
+        
         let size = CGSize(width: drawWidth, height: drawHeight)
         UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
         guard let ctx = UIGraphicsGetCurrentContext() else {
