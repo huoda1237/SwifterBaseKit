@@ -50,6 +50,26 @@ public let kSafeAreaBottomHeight: CGFloat = Int(kScreenStatusHeight) > 20 ? 34 :
 /// 差值
 public let kSafeDiffHeight: CGFloat = Int(kScreenStatusHeight) > 20 ? 24 : 0
 
+
+struct DeviceMetrics {
+    /// 动态导航栏高度（状态栏 + 导航栏内容高度）
+    static var navigationBarHeight: CGFloat {
+        let statusBarHeight: CGFloat
+        
+        if #available(iOS 13.0, *) {
+            statusBarHeight = UIApplication.shared.windows
+                .first(where: { $0.isKeyWindow })?
+                .windowScene?
+                .statusBarManager?
+                .statusBarFrame.height ?? 0
+        } else {
+            statusBarHeight = UIApplication.shared.statusBarFrame.height
+        }
+        
+        return statusBarHeight + 44  // 44 为 UINavigationBar 的默认内容高度
+    }
+}
+
 /// 沙盒路径
 public struct kDirectoryPath {
     public static let Home = NSHomeDirectory()
