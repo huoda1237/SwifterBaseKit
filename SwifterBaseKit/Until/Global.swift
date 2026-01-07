@@ -26,9 +26,8 @@ public var kScreenStatusHeight : CGFloat {
         return 44.0
     }
     return UIApplication.shared.statusBarFrame.height
-    
 }
-/// 状态栏高度
+/// 底部安全区域高度
 public var kScreenSafeBottomHeight : CGFloat {
     if #available(iOS 13.0, *) {
         if let bottom = UIApplication.shared.keyWindow?.safeAreaInsets.bottom {
@@ -40,8 +39,12 @@ public var kScreenSafeBottomHeight : CGFloat {
     
 }
 
-/// 导航栏高度
-public let kSafeAreaTopHeight : CGFloat = Int(kScreenStatusHeight) > 20 ? 88.0 : 64.0
+/// 导航栏高度+状态栏
+//public let kSafeAreaTopHeight : CGFloat = Int(kScreenStatusHeight) > 20 ? 88.0 : 64.0
+public var kSafeAreaTopHeight : CGFloat  {
+    let navc = UINavigationController(rootViewController: UIViewController())
+    return kScreenStatusHeight + navc.navigationBar.frame.height
+}
 /// tab高度
 public let kTabBarHeight: CGFloat = Int(kScreenStatusHeight) > 20 ? 83 : 49
 /// tab距离底部高度
