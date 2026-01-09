@@ -174,7 +174,6 @@ public struct Localize {
     
     public static func availableLanguages(_ excludeBase: Bool = false) -> [String] {
         var availableLanguages = Bundle.main.localizations
-//        var availableLanguages = LanguageType.allCases.map({ $0.rawValue })
         if let indexOfBase = availableLanguages.firstIndex(of: "Base") , excludeBase == true {
             availableLanguages.remove(at: indexOfBase)
         }
